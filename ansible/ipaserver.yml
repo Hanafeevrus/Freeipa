@@ -1,0 +1,84 @@
+---
+- name: configure ipaserver
+  hosts: ipa
+  become: yes
+  gather_facts: true
+
+  vars:
+
+    ipa_domain: comp.local
+    ipa_realm: COMP.LOCAL
+    ipa_admin: admin
+    ipa_admin_pass: Qwerty123
+    ipa_server: ipa.comp.local
+
+  tasks:
+    - name: Set hostname
+      hostname:
+         name: ipa.comp.local
+
+    - name: Config hosts
+      lineinfile:
+         dest: /etc/hosts
+         line: '{{ item }}'
+      with_items:
+            - '192.168.111.40 ipa.comp.local ipa'
+       
+    - name: configure name servers
+      lineinfile:
+        path: /etc/resolv.conf
+        line: 'nameserver 127.0.0.1'
+              
+    - name: install epel repo
+      yum:
+       name: epel-release
+       state: present
+      tags:
+      - epel-package
+      - packages
+
+    - name: upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+
+    - name: install freeipa server
+      yum:
+        name: ipa-server
+        state: present
+      tags:
+       - install-ipa-server
+  
+    - name: install ipa-server-dns
+      yum:
+       name: ipa-server-dns
+       state: present
+      tags:
+      - install-ipa-server-dns     
+   
+    - name: install chrony
+      yum:
+       name: chrony
+       state: present
+      tags:
+       - install-chrony
+
+    - name: configure ipa service  
+      shell: ipa-server-install -U
+       --hostname={{ ipa_server }}
+       --domain={{ ipa_domain }}
+       --realm={{ ipa_realm }}
+       --ds-password={{ ipa_admin_pass }}
+       --admin-password={{ ipa_admin_pass }}
+      notify:
+       - restart ipa services
+      tags:
+       - configure_ipa-server
+
+  handlers:
+    
+     - name: restart ipa services
+       systemd:
+         name: ipa
+         state: restarted
+         enabled: yes
