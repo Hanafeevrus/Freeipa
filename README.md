@@ -8,7 +8,7 @@
 Открыть в браузере [Freeipa](https://ipa.comp.local/ipa/ui) и авторизоваться    
 login: `admin`    
 password: `Qwerty123`   
-В разделе `Identity - Hosts` присутствует запись клиента `ipaclient.comp.local`
+В разделе [Identity - Hosts](https://github.com/Hanafeevrus/Freeipa/blob/master/photoeditorsdk-export.png) присутствует запись клиента `ipaclient.comp.local`
 ##### 1) Решение. Установка Freeipa server   
 * установка Freeipa server выполняется в автоматическом режиме средствами Ansible playbook.   
 Требование к инфраструктуре- имя машин клиента и сервера должно быть в формате FQDN, в данном случае `ipa.comp.loca` и `ipaclient.comp.local`    
