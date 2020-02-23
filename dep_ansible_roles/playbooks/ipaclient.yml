@@ -1,0 +1,8 @@
+---
+- name: ipaclient install\configur
+  hosts: ipaclient
+  become: yes
+     
+  roles:
+   - ipaclient
+  

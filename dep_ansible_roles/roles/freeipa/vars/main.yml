@@ -1,0 +1,6 @@
+---
+    ipa_domain: comp.local
+    ipa_realm: COMP.LOCAL
+    ipa_admin: admin
+    ipa_admin_pass: Qwerty123
+    ipa_server: ipa.comp.local

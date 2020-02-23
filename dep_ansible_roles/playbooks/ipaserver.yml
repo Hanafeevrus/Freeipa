@@ -1,0 +1,7 @@
+---
+- name: configure ipaserver
+  hosts: ipa
+  become: yes
+  gather_facts: true
+  roles:
+    - freeipa          

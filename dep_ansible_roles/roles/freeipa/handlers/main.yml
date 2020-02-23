@@ -1,0 +1,11 @@
+---
+     - name: restart ipa services
+       systemd:
+         name: ipa
+         state: restarted
+         enabled: yes
+     - name: start firewalld
+       systemd:
+         name: firewalld
+         state: restarted
+         enabled: yes       

@@ -1,0 +1,7 @@
+---
+# handlers file for roles/ipaclient
+- name: start firewalld
+  systemd:
+    name: firewalld
+    state: start
+    enable: True
