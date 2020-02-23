@@ -10,8 +10,8 @@ login: `admin`
 password: `Qwerty123`   
 В разделе [Identity - Hosts](https://github.com/Hanafeevrus/Freeipa/blob/master/photoeditorsdk-export.png) присутствует запись клиента `ipaclient.comp.local`
 ##### 1) Решение.       
-* `dep_ansible_playbook` - разворачивает и настраивает с помощью `ansible playbook`       
-* `dep_ansible_roles` - разворачивает и настраивает с помощью `ansible role`        
+* [`dep_ansible_playbook`](https://github.com/Hanafeevrus/Freeipa/tree/master/dep_ansible_playbook) - разворачивает и настраивает с помощью `ansible playbook`       
+* [`dep_ansible_roles`](https://github.com/Hanafeevrus/Freeipa/tree/master/dep_ansible_roles) - разворачивает и настраивает с помощью `ansible role`        
 Установка Freeipa server   
 * установка Freeipa server выполняется в автоматическом режиме средствами Ansible playbook.   
 Требование к инфраструктуре- имя машин клиента и сервера должно быть в формате FQDN, в данном случае `ipa.comp.loca` и `ipaclient.comp.local`    
