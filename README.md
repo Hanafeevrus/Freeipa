@@ -14,7 +14,7 @@ password: `Qwerty123`
 * [`dep_ansible_roles`](https://github.com/Hanafeevrus/Freeipa/tree/master/dep_ansible_roles) - разворачивает и настраивает с помощью `ansible role`        
 Установка Freeipa server   
 * установка Freeipa server выполняется в автоматическом режиме средствами Ansible playbook.   
-Требование к инфраструктуре- имя машин клиента и сервера должно быть в формате FQDN, в данном случае `ipa.comp.loca` и `ipaclient.comp.local`    
+Требование к инфраструктуре- имя машин клиента и сервера должно быть в формате FQDN, в данном случае `ipa.comp.local` и `ipaclient.comp.local`    
 переменные для развертывания Freeipa сервера:   
 ```   
 vars:
